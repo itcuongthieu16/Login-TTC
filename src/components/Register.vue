@@ -35,13 +35,26 @@
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >Mật khẩu</label
       >
-      <input
-        v-model="password"
-        type="password"
-        id="password"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        required
-      />
+      <div class="relative">
+        <input
+          v-model="password"
+          :type="showPassword ? 'text' : 'password'"
+          id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+        <button
+          class="absolute top-1/2 right-3 mt-1 transform -translate-y-1/2 focus:outline-none"
+          @click="showPassword = !showPassword"
+        >
+          <!-- <i :class="showPassword ? 'bx bx-low-vision' : 'fas fa-eye'"></i> -->
+          <box-icon
+            :name="showPassword ? 'show' : 'hide'"
+            color="#999"
+            size="20px"
+          ></box-icon>
+        </button>
+      </div>
     </div>
 
     <div class="mb-6">
@@ -50,13 +63,25 @@
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >Nhập lại mật khẩu</label
       >
-      <input
-        v-model="confirmPassword"
-        type="password"
-        id="confirmPassword"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        required
-      />
+      <div class="relative">
+        <input
+          v-model="confirmPassword"
+          :type="showPassword ? 'text' : 'password'"
+          id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+        <button
+          class="absolute top-1/2 right-3 mt-1 transform -translate-y-1/2 focus:outline-none"
+          @click="showPassword = !showPassword"
+        >
+          <box-icon
+            :name="showPassword ? 'show' : 'hide'"
+            color="#999"
+            size="20px"
+          ></box-icon>
+        </button>
+      </div>
     </div>
     <div class="flex items-start mb-6">
       <div class="flex items-center h-5">
@@ -95,6 +120,7 @@ export default {
       email: "",
       password: "",
       confirmPassword: "",
+      showPassword: false,
     };
   },
 

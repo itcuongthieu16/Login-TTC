@@ -21,13 +21,22 @@
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >Mật khẩu</label
       >
-      <input
-        v-model="password"
-        type="password"
-        id="password"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        required
-      />
+      <div class="relative">
+        <input
+          v-model="password"
+          :type="showPassword ? 'text' : 'password'"
+          id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+        <button
+          class="absolute top-1/2 right-3 mt-1 transform -translate-y-1/2 focus:outline-none"
+          @click="showPassword = !showPassword"
+        >
+          <!-- <i :class="showPassword ? 'bx bx-low-vision' : 'fas fa-eye'"></i> -->
+          <box-icon :name="showPassword ? 'show' : 'hide'" color='#999' size='20px'></box-icon>
+        </button>
+      </div>
     </div>
     <div class="flex items-start mb-6">
       <div class="flex items-center h-5">
@@ -57,6 +66,7 @@
 <script>
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import 'boxicons';
 
 export default {
   name: "Login",
@@ -64,6 +74,7 @@ export default {
     return {
       email: "",
       password: "",
+      showPassword: false,
     };
   },
   methods: {
@@ -79,7 +90,7 @@ export default {
           };
           localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
           this.$emit("loggedin");
-          toast.success("Đăng nhập thành công")
+          toast.success("Đăng nhập thành công");
           this.$router.push("/");
         } else {
           toast.error("Tài khoản hoặc mật khẩu không chính xác!");
