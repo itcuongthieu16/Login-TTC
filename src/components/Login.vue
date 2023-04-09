@@ -33,8 +33,11 @@
           class="absolute top-1/2 right-3 mt-1 transform -translate-y-1/2 focus:outline-none"
           @click="showPassword = !showPassword"
         >
-          <!-- <i :class="showPassword ? 'bx bx-low-vision' : 'fas fa-eye'"></i> -->
-          <box-icon :name="showPassword ? 'show' : 'hide'" color='#999' size='20px'></box-icon>
+          <box-icon
+            :name="showPassword ? 'show' : 'hide'"
+            color="#999"
+            size="20px"
+          ></box-icon>
         </button>
       </div>
     </div>
@@ -66,7 +69,7 @@
 <script>
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
-import 'boxicons';
+import "boxicons";
 
 export default {
   name: "Login",

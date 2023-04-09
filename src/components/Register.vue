@@ -47,7 +47,6 @@
           class="absolute top-1/2 right-3 mt-1 transform -translate-y-1/2 focus:outline-none"
           @click="showPassword = !showPassword"
         >
-          <!-- <i :class="showPassword ? 'bx bx-low-vision' : 'fas fa-eye'"></i> -->
           <box-icon
             :name="showPassword ? 'show' : 'hide'"
             color="#999"
